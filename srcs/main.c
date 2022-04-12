@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 		printf("is_sorted\n");
 	else
 		printf("not_sorted\n");
-//	print_list(info);
+	print_list(info);
 
 	if (sorted(info->a))
 		free_all(info);
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 		under_3(info);
 	else
 		over_7(info);
-
-//	print_list(info);
+	printf("info->turn = %d\n", info->turn);
+	print_list(info);
 	free_all(info);
 }

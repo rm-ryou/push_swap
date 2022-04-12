@@ -44,6 +44,8 @@ void    print_list(t_info *info);
 void	under_3(t_info *info);
 void	over_7(t_info *info);
 
+void	sort_b(t_info *info, int *turn);
+
 
 //else
 void    compress_pre(t_info *info);
@@ -60,13 +62,13 @@ bool    rra(t_info *info);		//w
 bool    rrb(t_info *info);		//W
 */
 
-t_info	*sa(t_info *info, int turn);		//s
-t_info	*sb(t_info *info, int turn);		//S
-t_info	*pa(t_info *info, int turn);		//p
-t_info	*pb(t_info *info, int turn);		//P
-t_info	*ra(t_info *info, int turn);		//r
-t_info	*rb(t_info *info, int turn);		//R
-t_info	*rra(t_info *info, int turn);		//w
-t_info	*rrb(t_info *info, int turn);		//W
+t_info	*sa(t_info *info);		//s
+t_info	*sb(t_info *info);		//S
+t_info	*pa(t_info *info);		//p
+t_info	*pb(t_info *info);		//P
+t_info	*ra(t_info *info);		//r
+t_info	*rb(t_info *info);		//R
+t_info	*rra(t_info *info);		//w
+t_info	*rrb(t_info *info);		//W
 
 #endif
