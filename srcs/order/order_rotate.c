@@ -1,6 +1,6 @@
 #include "../../include/push_swap.h"
 
-t_info	*ra(t_info *info, int turn)
+t_info	*ra(t_info *info)
 {
     t_dlist *a;
     t_dlist *tmp_cur;
@@ -16,7 +16,7 @@ t_info	*ra(t_info *info, int turn)
     return (info);
 }
 
-t_info	*rb(t_info *info, int turn)
+t_info	*rb(t_info *info)
 {
     t_dlist *b;
     t_dlist *tmp_cur;
