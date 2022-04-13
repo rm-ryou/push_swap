@@ -25,7 +25,7 @@ typedef struct  s_info
 	int		mid_a;
 	int		mid_b;
 	int     turn;
-	char    log[1024];
+	char    *log;
 }   t_info;
 
 //dlist

@@ -20,11 +20,6 @@ int main(int argc, char **argv)
 	set_list(info, argc, argv);
 	compress_pre(info);
 
-	int flg = sorted(info->a);
-	if (flg)
-		printf("is_sorted\n");
-	else
-		printf("not_sorted\n");
 	print_list(info);
 
 	if (sorted(info->a))
@@ -35,7 +30,28 @@ int main(int argc, char **argv)
 		under_3(info);
 	else
 		over_7(info);
-	printf("info->turn = %d\n", info->turn);
+
+	for (int i = 0; i < info->turn; i++)
+    {
+        if (info->log[i] == 's')
+            printf("sa     i = %d\n", i);
+        else if (info->log[i] == 'S')
+            printf("sb     i = %d\n", i);
+        else if (info->log[i] == 'p')
+            printf("pa     i = %d\n", i);
+        else if (info->log[i] == 'P')
+            printf("pb     i = %d\n", i);
+        else if (info->log[i] == 'r')
+            printf("ra     i = %d\n", i);
+        else if (info->log[i] == 'R')
+            printf("rb     i = %d\n", i);
+        else if (info->log[i] == 'w')
+            printf("rra    i = %d\n", i);
+        else if (info->log[i] == 'W')
+            printf("rrb    i = %d\n", i);
+        else
+            continue;
+    }
 	print_list(info);
 	free_all(info);
 }

@@ -21,6 +21,9 @@ void    init_all(t_info **info)
 	(*info)->mid_a = 0;
 	(*info)->mid_b = 0;
 	(*info)->turn = 0;
+	(*info)->log = (char *)malloc(sizeof(char));
+	if ((*info)->log == NULL)
+		return ;
     init(&(*info), &(*info)->a);
     init(&(*info), &(*info)->b);
 }

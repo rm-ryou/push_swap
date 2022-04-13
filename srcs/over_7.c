@@ -92,10 +92,13 @@ void	divide(t_info *info, int *turn)
 
 void	over_7(t_info *info)
 {
+	if (info->sorted == info->value_num - 1)
+	{
+		ra(info);
+		info->turn += 1;
+	}
 	if (sorted(info->a) && dlist_size(info->b) == 0)
 		return ;
-	else if (info->sorted == info->value_num - 1)
-		ra(info);
 	divide(info, &info->turn);
 	sort_b(info, &info->turn);
 	over_7(info);

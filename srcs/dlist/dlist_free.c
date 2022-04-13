@@ -25,6 +25,8 @@ void    free_all(t_info *info)
 {
     lst_clear(info->a);
     lst_clear(info->b);
+	free(info->log);
+	info->log = NULL;
     free(info);
     info = NULL;
     exit(1);
