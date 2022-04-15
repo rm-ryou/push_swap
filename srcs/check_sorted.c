@@ -3,18 +3,16 @@
 bool	sorted(t_dlist *list)
 {
 	t_dlist	*node_cur;
-	t_dlist	*node_next;
 	int		i;
 
 	node_cur = list->next;
-	node_next = list->next->next;
 	i = 1;
-	while (node_next != list)
+	while (node_cur != list)
 	{
-		if (node_cur->value > node_next->value)
+		if (node_cur->value != i)
 			return (false);
 		node_cur = node_cur->next;
-		node_next = node_next->next;
+		i += 1;
 	}
 	return (true);
 }

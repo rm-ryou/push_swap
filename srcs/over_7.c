@@ -122,6 +122,7 @@ void	sort_b(t_info *info, int *turn)
 	sort_to_mid(info, &info->turn);
 }
 
+
 void	re_rotate(t_info *info, int *turn, int rra_num)
 {
 	int	i;
@@ -154,7 +155,8 @@ void	divide(t_info *info, int *turn)
 
 	i = info->sorted;
 	rra_num = 0;
-	info->mid_a = (info->value_num + i) / 2;
+//	info->mid_a = (info->value_num + i) / 2;
+	info->mid_a = ((info->value_num - info->mid_a) / 2) + info->mid_a;
 	a = info->a;
 	b = info->b;
 	while (i < info->value_num)
@@ -190,9 +192,6 @@ void	over_7(t_info *info)
 		return ;
 	divide(info, &info->turn);
 	sort_b(info, &info->turn);
-//	print_list(info);
-//	printf("----------------------------------------------\n");
-//	divide(info, &info->turn);
 	over_7(info);
 }
 
@@ -213,10 +212,11 @@ void    sort(t_info *info, int *turn)
 	a = info->a;
 	cur_b = b->next;
 	size = 0;
-    while(sorted(a))
+    while(sorted(a) == false)
     {
         //size = dlist_size(a);
 		printf("test_00\n");
+		size = 0;
         while(size < info->value_num)
         {
 			cur_a = a->next;

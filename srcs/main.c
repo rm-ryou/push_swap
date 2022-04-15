@@ -33,7 +33,12 @@ int main(int argc, char **argv)
 /*	else
 		sort(info, &info->turn);*/
 
-	for (int i = 0; i < info->turn; i++)
+	print_list(info);
+	printf("mid_a   = %d\n", info->mid_a);
+	printf("mid_b   = %d\n", info->mid_b);
+	printf("sorted  = %d\n", info->sorted);
+	printf("info->value_ = %d\n", info->value_num);
+		for (int i = 0; i < info->turn; i++)
     {
         if (info->log[i] == 's')
             printf("sa     i = %d\n", i);
@@ -58,7 +63,7 @@ int main(int argc, char **argv)
         else
             continue;
     }
-	//print_list(info);
+	print_list(info);
 	free_all(info);
 }
 
