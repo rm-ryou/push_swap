@@ -43,6 +43,7 @@ void    print_list(t_info *info);
 //sort_util
 void	under_3(t_info *info);
 void	over_7(t_info *info);
+void    sort(t_info *info, int *turn);
 
 void	sort_b(t_info *info, int *turn);
 
@@ -70,5 +71,7 @@ t_info	*ra(t_info *info);		//r
 t_info	*rb(t_info *info);		//R
 t_info	*rra(t_info *info);		//w
 t_info	*rrb(t_info *info);		//W
+t_info	*rrr(t_info *info);		//T
+t_info	*rr(t_info *info);		//F
 
 #endif

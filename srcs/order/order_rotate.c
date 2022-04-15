@@ -31,3 +31,28 @@ t_info	*rb(t_info *info)
     info->log[info->turn] = 'R';
     return (info);
 }
+
+t_info	*rr(t_info *info)
+{
+	t_dlist *a;
+    t_dlist *tmp_cur_a;
+    t_dlist *tmp_prev_a;
+    t_dlist *b;
+    t_dlist *tmp_cur_b;
+    t_dlist *tmp_prev_b;
+
+	a = info->a;
+    tmp_cur_a = a->next;
+    tmp_prev_a = a->prev;
+    a->next = tmp_cur_a->next;
+    tmp_cur_a->next->prev = a;
+    node_insert(a->prev, tmp_cur_a);
+    b = info->b;
+    tmp_cur_b = b->next;
+    tmp_prev_b = b->prev;
+    b->next = tmp_cur_b->next;
+    tmp_cur_b->next->prev = b;
+    node_insert(b->prev, tmp_cur_b);
+    info->log[info->turn] = 'F';
+    return (info);
+}

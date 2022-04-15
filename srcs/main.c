@@ -28,8 +28,10 @@ int main(int argc, char **argv)
 		put_message(info);
 	else if (info->value_num <= 3)
 		under_3(info);
-	else
+	else// if (info->value_num <= 100)
 		over_7(info);
+/*	else
+		sort(info, &info->turn);*/
 
 	for (int i = 0; i < info->turn; i++)
     {
@@ -49,9 +51,17 @@ int main(int argc, char **argv)
             printf("rra    i = %d\n", i);
         else if (info->log[i] == 'W')
             printf("rrb    i = %d\n", i);
+		else if (info->log[i] == 'T')
+            printf("rrr    i = %d\n", i);
+		else if (info->log[i] == 'F')
+            printf("rr     i = %d\n", i);
         else
             continue;
     }
-	print_list(info);
+	//print_list(info);
 	free_all(info);
 }
+
+//ruby -e "puts (0..100).to_a.shuffle.join(' ')"; 
+
+//ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG 
