@@ -1,69 +1,26 @@
 #include "../include/push_swap.h"
 
-void	rotate(t_info *info, int *turn, int ra_num)
-{
-	int		i;
-	t_dlist	*cur_a;
-
-	i = 0;
-	while (i < ra_num)
-	{
-		cur_a = info->a->next;
-		ra(info);
-		*turn += 1;
-		i += 1;
-		info->sorted += 1;
-	}
-}
-
-void	sort_to_mid_util(t_info *info, int *turn)
-{
-	int		ra_num;
-	int		mid_a_tmp;
-	t_dlist	*cur_b;
-
-	ra_num = 0;
-	mid_a_tmp = info->mid_a;
-	while (dlist_size(info->b) != 0)
-	{
-		cur_b = info->b->next;
-		if (cur_b->index == mid_a_tmp)
-		{
-			pa(info);
-			ra_num += 1;
-			mid_a_tmp -= 1;
-		}
-		else if (cur_b->index == info->sorted + 1)
-		{
-			pa(info);
-			*turn += 1;
-			ra(info);
-			info->sorted += 1;
-		}
-		else
-			rb(info);
-		*turn += 1;
-	}
-	rotate(info, &info->turn, ra_num);
-}
-
 void	sort_to_mid(t_info *info, int *turn)
 {
-	int		i;
+	int	i;
 	t_dlist	*cur_a;
 	t_dlist	*cur_b;
-
-	int		ra_num = 0;
-	int		mid_a_tmp = info->mid_a;
 
 	i = info->sorted;
 	while (i < info->mid_a)
 	{
 		cur_a = info->a->next;
 		cur_b = info->b->next;
-		if (cur_a->index == info->sorted + 1)
+		if (cur_b->index == info->sorted)
 		{
+			pa(info);
+			*turn += 1;
 			ra(info);
+			info->sorted += 1;
+		}
+		else if (cur_a->index == info->sorted)
+		{
+			rr(info);
 			info->sorted += 1;
 		}
 		else
@@ -71,26 +28,24 @@ void	sort_to_mid(t_info *info, int *turn)
 		*turn += 1;
 		i += 1;
 	}
-	if (dlist_size(info->b) > 0)
-		sort_to_mid_util(info, &info->turn);
 }
 
 void	sort_b(t_info *info, int *turn)
 {
-	t_dlist	*cur_b;
+	t_dlist	*cur;
 
 	info->mid_b += dlist_size(info->b) / 2;
 	while (dlist_size(info->b) != 0)
 	{
-		cur_b = info->b->next;
-		if (cur_b->index == info->sorted + 1)
+		cur = info->b->next;
+		if (cur->index == info->sorted)
 		{
 			pa(info);
 			*turn += 1;
 			ra(info);
 			info->sorted += 1;
 		}
-		else if (cur_b->index > info->mid_b)
+		else if (cur->index > info->mid_b)
 			pa(info);
 		else
 			rb(info);
@@ -101,14 +56,14 @@ void	sort_b(t_info *info, int *turn)
 
 void	re_rotate(t_info *info, int *turn, int rra_num)
 {
-	int		i;
+	int	i;
 	t_dlist	*cur;
-	
+
 	i = 0;
 	while (i < rra_num)
 	{
 		cur = info->b->next;
-		if (cur->index != info->sorted + 1)
+		if (cur->index != info->sorted)
 			rrr(info);
 		else
 			rra(info);
@@ -119,13 +74,13 @@ void	re_rotate(t_info *info, int *turn, int rra_num)
 
 void	divide(t_info *info, int *turn)
 {
-	int		i;
-	int		rra_num;
+	int	i;
+	int	rra_num;
 	t_dlist	*cur_a;
 	t_dlist	*cur_b;
 
 	i = info->sorted;
-	info->mid_b = info->mid_a;
+	info->mid_a = info->mid_a;
 	info->mid_a = ((info->value_num - info->mid_a) / 2) + info->mid_a;
 	rra_num = 0;
 	while (i < info->value_num)
@@ -147,15 +102,14 @@ void	divide(t_info *info, int *turn)
 
 void	over_7(t_info *info)
 {
-	if (info->sorted == info->value_num - 1)
+	if (sorted(info->a) && dlist_size(info->b) == 0)
+		return ;
+	else if (info->sorted == info->value_num - 1)
 	{
 		ra(info);
 		info->turn += 1;
 		return ;
 	}
-	else if (sorted(info->a) && dlist_size(info->b) == 0)
-		return ;
 	divide(info, &info->turn);
 	sort_b(info, &info->turn);
-	over_7(info);
 }

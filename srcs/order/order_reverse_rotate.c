@@ -10,7 +10,10 @@ t_info	*rra(t_info *info)
     tmp_cur->prev->next = a;
     a->prev = tmp_cur->prev;
     node_insert(a, tmp_cur);
-    info->log[info->turn] = 'w';
+	if (info->mid_a == 0)
+	    info->log[info->turn] = 'w';
+	else
+		ft_putstr_fd("rra\n", 1);
     return (info);
 }
 
@@ -24,7 +27,7 @@ t_info	*rrb(t_info *info)
     tmp_cur->prev->next = b;
     b->prev = tmp_cur->prev;
     node_insert(b, tmp_cur);
-    info->log[info->turn] = 'W';
+	ft_putstr_fd("rrb\n", 1);
     return (info);
 }
 
@@ -45,6 +48,6 @@ t_info	*rrr(t_info *info)
     tmp_cur_b->prev->next = b;
     b->prev = tmp_cur_b->prev;
     node_insert(b, tmp_cur_b);
-    info->log[info->turn] = 'T';
+	ft_putstr_fd("rrr\n", 1);
     return (info);
 }

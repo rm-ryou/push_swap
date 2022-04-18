@@ -15,7 +15,10 @@ t_info	*sa(t_info *info)
 	tmp_cur->next = tmp_next->next;
 	tmp_next->prev = a;
 	tmp_next->next = tmp_cur;
-	info->log[info->turn] = 's';
+	if (info->mid_a == 0)
+	    info->log[info->turn] = 's';
+	else
+		ft_putstr_fd("sa\n", 1);
 	return (info);
 }
 
@@ -34,6 +37,6 @@ t_info	*sb(t_info *info)
 	tmp_cur->next = tmp_next->next;
 	tmp_next->prev = b;
 	tmp_next->next = tmp_cur;
-	info->log[info->turn] = 'S';
+	ft_putstr_fd("sb\n", 1);
 	return (info);
 }

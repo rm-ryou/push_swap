@@ -19,54 +19,24 @@ int main(int argc, char **argv)
 	init_all(&info);
 	set_list(info, argc, argv);
 	compress_pre(info);
-
-	print_list(info);
-
 	if (sorted(info->a))
 		free_all(info);
 	if (info->value_num <= 0)
 		put_message(info);
 	else if (info->value_num <= 3)
+	{
 		under_3(info);
-	else// if (info->value_num <= 100)
+		print_log(info);
+	}
+	else
 		over_7(info);
-/*	else
-		sort(info, &info->turn);*/
 
-	print_list(info);
-	printf("mid_a   = %d\n", info->mid_a);
-	printf("mid_b   = %d\n", info->mid_b);
-	printf("sorted  = %d\n", info->sorted);
-	printf("info->value_ = %d\n", info->value_num);
-		for (int i = 0; i < info->turn; i++)
-    {
-        if (info->log[i] == 's')
-            printf("sa     i = %d\n", i);
-        else if (info->log[i] == 'S')
-            printf("sb     i = %d\n", i);
-        else if (info->log[i] == 'p')
-            printf("pa     i = %d\n", i);
-        else if (info->log[i] == 'P')
-            printf("pb     i = %d\n", i);
-        else if (info->log[i] == 'r')
-            printf("ra     i = %d\n", i);
-        else if (info->log[i] == 'R')
-            printf("rb     i = %d\n", i);
-        else if (info->log[i] == 'w')
-            printf("rra    i = %d\n", i);
-        else if (info->log[i] == 'W')
-            printf("rrb    i = %d\n", i);
-		else if (info->log[i] == 'T')
-            printf("rrr    i = %d\n", i);
-		else if (info->log[i] == 'F')
-            printf("rr     i = %d\n", i);
-        else
-            continue;
-    }
-	print_list(info);
+//	print_list(info);
 	free_all(info);
 }
 
 //ruby -e "puts (0..100).to_a.shuffle.join(' ')"; 
 
-//ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG 
+//ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG 
+
+//./push_swap 66 21 8 95 47 74 15 38 96 48 49 20 35 17 28 51 68 52 12 63 19 29 39 67 7 2 100 91 46 44 90 85 6 30 92 57 98 88 50 1 53 60 37 18 24 73 76 58 83 64 3 80 94 43 97 9 82 5 59 45 34 54 84 86 56 87 36 4 78 70 32 65 99 62 79 26 75 33 25 22 31 11 69 13 89 41 40 81 16 55 23 61 72 42 27 71 10 77 93 14
