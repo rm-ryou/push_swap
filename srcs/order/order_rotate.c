@@ -12,7 +12,7 @@ t_info	*ra(t_info *info)
     a->next = tmp_cur->next;
     tmp_cur->next->prev = a;
     node_insert(a->prev, tmp_cur);
-	if (info->mid_a == 0)
+	if (info->value_num <= 3)
 	    info->log[info->turn] = 'r';
 	else
 		ft_putstr_fd("ra\n", 1);

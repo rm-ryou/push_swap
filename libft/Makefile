@@ -37,10 +37,10 @@ SRCS = ft_isalpha.c\
 
 OBJS = $(SRCS:.c=.o)
 
+all:$(NAME)
+
 $(NAME): $(OBJS)
 	ar rcs $@ $(OBJS)
-
-all:$(NAME)
 
 clean:
 	rm -f $(OBJS)

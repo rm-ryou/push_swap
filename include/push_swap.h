@@ -28,6 +28,8 @@ typedef struct  s_info
 	char    *log;
 }   t_info;
 
+
+int main(int argc, char **argv);
 //dlist
 void    free_all(t_info *info);
 void    init_all(t_info **info);
@@ -45,26 +47,14 @@ void    print_list(t_info *info);
 //sort_util
 void	under_3(t_info *info);
 void	over_7(t_info *info);
-void    sort(t_info *info, int *turn);
-
+void    radix_sort(t_info *info, int *turn);
 void	sort_b(t_info *info, int *turn);
 
-
 //else
+void    put_message(t_info *info);
 void    compress_pre(t_info *info);
 
-
 //order
-/*bool    sa(t_info *info);		//s
-bool    sb(t_info *info);		//S
-bool    pa(t_info *info);		//p
-bool    pb(t_info *info);		//P
-bool    ra(t_info *info);		//r
-bool    rb(t_info *info);		//R
-bool    rra(t_info *info);		//w
-bool    rrb(t_info *info);		//W
-*/
-
 t_info	*sa(t_info *info);		//s
 t_info	*sb(t_info *info);		//S
 t_info	*pa(t_info *info);		//p

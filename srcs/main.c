@@ -1,11 +1,6 @@
 #include "../include/push_swap.h"
 
-__attribute__((destructor))
-static void destructor() {
-	system("leaks -q so_long");
-}
-
-void    put_message(t_info *info)
+void	put_message(t_info *info)
 {
 	printf("Error\n");
 	free_all(info);
@@ -28,11 +23,12 @@ int main(int argc, char **argv)
 		under_3(info);
 		print_log(info);
 	}
-	else
+	else if (info->value_num <= 100)
 		over_7(info);
-
-//	print_list(info);
+	else
+		radix_sort(info, &info->turn);
 	free_all(info);
+	return (0);
 }
 
 //ruby -e "puts (0..100).to_a.shuffle.join(' ')"; 

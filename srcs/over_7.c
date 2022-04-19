@@ -126,6 +126,8 @@ void	divide(t_info *info, int *turn)
 	i = info->sorted;
 	info->mid_b = info->mid_a;
 	info->mid_a = ((info->value_num - info->mid_a) / 2) + info->mid_a;
+//	if (info->value_num - info->mid_a <= 6)
+//		info->mid_a = info->value_num;
 	rra_num = 0;
 	while (i < info->value_num)
 	{

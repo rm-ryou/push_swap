@@ -15,7 +15,7 @@ t_info	*sa(t_info *info)
 	tmp_cur->next = tmp_next->next;
 	tmp_next->prev = a;
 	tmp_next->next = tmp_cur;
-	if (info->mid_a == 0)
+	if (info->value_num <= 3)
 	    info->log[info->turn] = 's';
 	else
 		ft_putstr_fd("sa\n", 1);
