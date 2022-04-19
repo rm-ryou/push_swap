@@ -122,7 +122,6 @@ void	divide(t_info *info, int *turn)
 	int		i;
 	int		rra_num;
 	t_dlist	*cur_a;
-	t_dlist	*cur_b;
 
 	i = info->sorted;
 	info->mid_b = info->mid_a;
@@ -131,7 +130,6 @@ void	divide(t_info *info, int *turn)
 	while (i < info->value_num)
 	{
 		cur_a = info->a->next;
-		cur_b = info->b->next;
 		if (cur_a->index <= info->mid_a)
 			pb(info);
 		else
