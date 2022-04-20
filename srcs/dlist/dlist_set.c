@@ -6,7 +6,7 @@ t_dlist *list_new(t_info *info, int value)
 
 	new = (t_dlist *)malloc(sizeof(t_dlist));
 	if (new == NULL)
-		return (NULL);
+		put_message(info);
 	new->value = value;
 	new->index = -1;
 	new->next = NULL;

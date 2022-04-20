@@ -9,8 +9,6 @@ void    lst_clear(t_dlist *list)
     while (tmp->next != list)
     {
         for_free = tmp->next;
-        //for_free->prev->next = for_free->next;
-        //for_free->next->prev = for_free->prev;
         node_erase(for_free);
         for_free->next = NULL;
         for_free->prev = NULL;
@@ -25,8 +23,6 @@ void    free_all(t_info *info)
 {
     lst_clear(info->a);
     lst_clear(info->b);
-	free(info->log);
-	info->log = NULL;
     free(info);
     info = NULL;
     exit(1);

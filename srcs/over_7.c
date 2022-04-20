@@ -3,12 +3,10 @@
 void	rotate(t_info *info, int *turn, int ra_num)
 {
 	int		i;
-	t_dlist	*cur_a;
 
 	i = 0;
 	while (i < ra_num)
 	{
-		cur_a = info->a->next;
 		ra(info);
 		*turn += 1;
 		i += 1;
@@ -51,16 +49,11 @@ void	sort_to_mid(t_info *info, int *turn)
 {
 	int		i;
 	t_dlist	*cur_a;
-	t_dlist	*cur_b;
-
-	int		ra_num = 0;
-	int		mid_a_tmp = info->mid_a;
 
 	i = info->sorted;
 	while (i < info->mid_a)
 	{
 		cur_a = info->a->next;
-		cur_b = info->b->next;
 		if (cur_a->index == info->sorted + 1)
 		{
 			ra(info);
@@ -126,8 +119,6 @@ void	divide(t_info *info, int *turn)
 	i = info->sorted;
 	info->mid_b = info->mid_a;
 	info->mid_a = ((info->value_num - info->mid_a) / 2) + info->mid_a;
-//	if (info->value_num - info->mid_a <= 6)
-//		info->mid_a = info->value_num;
 	rra_num = 0;
 	while (i < info->value_num)
 	{

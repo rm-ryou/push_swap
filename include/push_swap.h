@@ -25,11 +25,10 @@ typedef struct  s_info
 	int		mid_a;
 	int		mid_b;
 	int     turn;
-	char    *log;
+	char    log[1024];
 }   t_info;
 
 
-int main(int argc, char **argv);
 //dlist
 void    free_all(t_info *info);
 void    init_all(t_info **info);
@@ -38,6 +37,7 @@ int     dlist_size(t_dlist *list);
 void    node_insert(t_dlist *list, t_dlist *node);
 void    node_erase(t_dlist *node);
 bool	sorted(t_dlist *list);
+bool	sorted_re(t_dlist *list);
 
 void	print_log(t_info *info);
 

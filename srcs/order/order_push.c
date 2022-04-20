@@ -14,7 +14,10 @@ t_info	*pa(t_info *info)
 	b->next = node->next;
 	node->next->prev = b;
 	node_insert(a, node);
-	ft_putstr_fd("pa\n", 1);
+	if (info->value_num <= 6)
+	    info->log[info->turn] = 'p';
+	else
+		ft_putstr_fd("pa\n", 1);
 	return (info);
 }
 
@@ -32,6 +35,9 @@ t_info	*pb(t_info *info)
 	a->next = node->next;
 	node->next->prev = a;
 	node_insert(b, node);
-	ft_putstr_fd("pb\n", 1);
+	if (info->value_num <= 6)
+	    info->log[info->turn] = 'P';
+	else
+		ft_putstr_fd("pb\n", 1);
 	return (info);
 }

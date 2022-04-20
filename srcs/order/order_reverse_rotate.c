@@ -10,7 +10,7 @@ t_info	*rra(t_info *info)
     tmp_cur->prev->next = a;
     a->prev = tmp_cur->prev;
     node_insert(a, tmp_cur);
-	if (info->value_num <= 3)
+	if (info->value_num <= 6)
 	    info->log[info->turn] = 'w';
 	else
 		ft_putstr_fd("rra\n", 1);
@@ -27,7 +27,10 @@ t_info	*rrb(t_info *info)
     tmp_cur->prev->next = b;
     b->prev = tmp_cur->prev;
     node_insert(b, tmp_cur);
-	ft_putstr_fd("rrb\n", 1);
+	if (info->value_num <= 6)
+	    info->log[info->turn] = 'W';
+	else
+		ft_putstr_fd("rrb\n", 1);
     return (info);
 }
 
