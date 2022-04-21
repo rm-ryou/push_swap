@@ -17,6 +17,7 @@ SRCS = $(SRCS_DIR)main.c\
 		$(SRCS_DIR)over_7.c\
 		$(SRCS_DIR)print_log.c\
 		$(SRCS_DIR)radix_sort.c\
+		$(SRCS_DIR)check_value.c\
 		$(DLIST_DIR)dlist_free.c\
 		$(DLIST_DIR)dlist_init.c\
 		$(DLIST_DIR)dlist_print.c\

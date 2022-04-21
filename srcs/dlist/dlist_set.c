@@ -25,7 +25,8 @@ void    set_list(t_info *info, int argc, char **argv)
 	while (i > 0)
 	{
 		new = list_new(info, value);
-		value = ft_atoi(argv[i]);
+	//	value = ft_atoi(argv[i]);
+		value = check_value(info, argv[i]);
 		node_insert(info->a, list_new(info, value));
 		free(new);
 		i -= 1;

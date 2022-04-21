@@ -38,6 +38,7 @@ void    node_insert(t_dlist *list, t_dlist *node);
 void    node_erase(t_dlist *node);
 bool	sorted(t_dlist *list);
 bool	sorted_re(t_dlist *list);
+int		check_value(t_info *info, char *value);
 
 void	print_log(t_info *info);
 

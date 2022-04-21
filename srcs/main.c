@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 		over_7(info);
 	else
 		radix_sort(info, &info->turn);
-//	print_list(info);
+	print_list(info);
 	free_all(info);
 	return (0);
 }
