@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   order_swap.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/19 19:21:56 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/04/22 19:49:54 by rmoriya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/push_swap.h"
 
 t_info	*sa(t_info *info)
 {
-	t_dlist *a;
-	t_dlist *tmp_cur;
-	t_dlist *tmp_next;
+	t_dlist	*a;
+	t_dlist	*tmp_cur;
+	t_dlist	*tmp_next;
 
 	a = info->a;
 	tmp_cur = a->next;
@@ -16,7 +28,7 @@ t_info	*sa(t_info *info)
 	tmp_next->prev = a;
 	tmp_next->next = tmp_cur;
 	if (info->value_num <= 6)
-	    info->log[info->turn] = 's';
+		info->log[info->turn] = 's';
 	else
 		ft_putstr_fd("sa\n", 1);
 	return (info);
@@ -24,9 +36,9 @@ t_info	*sa(t_info *info)
 
 t_info	*sb(t_info *info)
 {
-	t_dlist *b;
-	t_dlist *tmp_cur;
-	t_dlist *tmp_next;
+	t_dlist	*b;
+	t_dlist	*tmp_cur;
+	t_dlist	*tmp_next;
 
 	b = info->b;
 	tmp_cur = b->next;
@@ -38,7 +50,7 @@ t_info	*sb(t_info *info)
 	tmp_next->prev = b;
 	tmp_next->next = tmp_cur;
 	if (info->value_num <= 6)
-	    info->log[info->turn] = 'S';
+		info->log[info->turn] = 'S';
 	else
 		ft_putstr_fd("sb\n", 1);
 	return (info);

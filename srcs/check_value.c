@@ -1,22 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_value.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/21 14:22:13 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/04/22 19:54:10 by rmoriya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 int	check_value(t_info *info, char *value)
 {
 	int		i;
-	int		res;
 	int		value_len;
 	char	*str;
 
 	value_len = ft_strlen(value);
-	res = ft_atoi(value);
-	str = ft_itoa(res);
+	str = ft_itoa(ft_atoi(value));
 	if (ft_strncmp(value, str, value_len) != 0)
 	{
 		free(str);
 		put_message(info);
 	}
 	free(str);
-	i =  0;
+	i = 0;
 	if (value[i] == '\0')
 		put_message(info);
 	else if (value[i] == '-')
@@ -27,5 +37,5 @@ int	check_value(t_info *info, char *value)
 			put_message(info);
 		i += 1;
 	}
-	return (res);
+	return (ft_atoi(value));
 }

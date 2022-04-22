@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   order_push.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/19 19:21:56 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/04/22 19:50:17 by rmoriya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/push_swap.h"
 
 t_info	*pa(t_info *info)
 {
-	t_dlist *a;
-	t_dlist *b;
-	t_dlist *node;
+	t_dlist	*a;
+	t_dlist	*b;
+	t_dlist	*node;
 
 	a = info->a;
 	b = info->b;
@@ -15,7 +27,7 @@ t_info	*pa(t_info *info)
 	node->next->prev = b;
 	node_insert(a, node);
 	if (info->value_num <= 6)
-	    info->log[info->turn] = 'p';
+		info->log[info->turn] = 'p';
 	else
 		ft_putstr_fd("pa\n", 1);
 	return (info);
@@ -23,9 +35,9 @@ t_info	*pa(t_info *info)
 
 t_info	*pb(t_info *info)
 {
-	t_dlist *a;
-	t_dlist *b;
-	t_dlist *node;
+	t_dlist	*a;
+	t_dlist	*b;
+	t_dlist	*node;
 
 	a = info->a;
 	b = info->b;
@@ -36,7 +48,7 @@ t_info	*pb(t_info *info)
 	node->next->prev = a;
 	node_insert(b, node);
 	if (info->value_num <= 6)
-	    info->log[info->turn] = 'P';
+		info->log[info->turn] = 'P';
 	else
 		ft_putstr_fd("pb\n", 1);
 	return (info);

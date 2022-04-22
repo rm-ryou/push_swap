@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dfs.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/19 19:21:56 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/04/22 20:00:25 by rmoriya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void	divide_under6(t_info *info, int *turn)
@@ -69,7 +81,6 @@ void	push_b(t_info *info, int *turn)
 {
 	while (dlist_size(info->b) != 0)
 	{
-//		cur = info->b->next;
 		pa(info);
 		*turn += 1;
 	}
@@ -94,6 +105,6 @@ void	under_3(t_info *info)
 		print_log(info);
 		dfs_under3_b(info, 0);
 		print_log(info);
-		push_b(info,  &info->turn);
+		push_b(info, &info->turn);
 	}
 }
