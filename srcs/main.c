@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	init_all(&info);
 	set_list(info, argc, argv);
 	compress_pre(info);
-	if (sorted(info->a))
+/*	if (sorted(info->a))
 		free_all(info);
 	if (info->value_num <= 0)
 		put_message(info);
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	else if (info->value_num <= 100)
 		over_7(info);
 	else
-		radix_sort(info, &info->turn);
+		radix_sort(info, &info->turn);*/
 	print_list(info);
 	free_all(info);
 	return (0);
