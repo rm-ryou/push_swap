@@ -67,13 +67,9 @@ bool	dfs_under3_a(t_info *info, int turn)
 
 void	push_b(t_info *info, int *turn)
 {
-	int	i;
-	t_dlist	*cur;
-
-	i = 0;
 	while (dlist_size(info->b) != 0)
 	{
-		cur = info->b->next;
+//		cur = info->b->next;
 		pa(info);
 		*turn += 1;
 	}
@@ -82,6 +78,8 @@ void	push_b(t_info *info, int *turn)
 
 void	under_3(t_info *info)
 {
+	if (sorted(info->a))
+		return ;
 	if (info->value_num == 1)
 		free_all(info);
 	else if (info->value_num <= 3)
@@ -97,6 +95,5 @@ void	under_3(t_info *info)
 		dfs_under3_b(info, 0);
 		print_log(info);
 		push_b(info,  &info->turn);
-		print_log(info);
 	}
 }

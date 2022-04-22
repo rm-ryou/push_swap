@@ -2,9 +2,9 @@
 
 void	put_message(t_info *info)
 {
-	printf("Error\n");
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	free_all(info);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 int main(int argc, char **argv)
@@ -14,8 +14,7 @@ int main(int argc, char **argv)
 	init_all(&info);
 	set_list(info, argc, argv);
 	compress_pre(info);
-/*	if (sorted(info->a))
-		free_all(info);
+//	print_list(info);
 	if (info->value_num <= 0)
 		put_message(info);
 	else if (info->value_num <= 6)
@@ -23,8 +22,8 @@ int main(int argc, char **argv)
 	else if (info->value_num <= 100)
 		over_7(info);
 	else
-		radix_sort(info, &info->turn);*/
-	print_list(info);
+		radix_sort(info, &info->turn);
+//	print_list(info);
 	free_all(info);
 	return (0);
 }

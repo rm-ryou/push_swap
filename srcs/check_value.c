@@ -8,6 +8,14 @@ int	check_value(t_info *info, char *value)
 	char	*str;
 
 	value_len = ft_strlen(value);
+	res = ft_atoi(value);
+	str = ft_itoa(res);
+	if (ft_strncmp(value, str, value_len) != 0)
+	{
+		free(str);
+		put_message(info);
+	}
+	free(str);
 	i =  0;
 	if (value[i] == '\0')
 		put_message(info);
@@ -19,13 +27,5 @@ int	check_value(t_info *info, char *value)
 			put_message(info);
 		i += 1;
 	}
-	res = ft_atoi(value);
-	str = ft_itoa(res);
-	if (ft_strncmp(value, str, value_len) != 0)
-	{
-		free(str);
-		put_message(info);
-	}
-	free(str);
 	return (res);
 }

@@ -2,13 +2,13 @@
 
 void    lst_clear(t_dlist *list)
 {
-    t_dlist *tmp;
+  //  t_dlist *tmp;
     t_dlist *for_free;
 
-    tmp = list;
-    while (tmp->next != list)
+    //tmp = list;
+    while (list->next != list)
     {
-        for_free = tmp->next;
+        for_free = list->next;
         node_erase(for_free);
         for_free->next = NULL;
         for_free->prev = NULL;
@@ -25,5 +25,4 @@ void    free_all(t_info *info)
     lst_clear(info->b);
     free(info);
     info = NULL;
-    exit(1);
 }

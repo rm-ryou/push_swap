@@ -1,5 +1,5 @@
 NAME := push_swap
-CFLAGS := -fsanitize=address -fno-omit-frame-pointer -g # -Wall -Werror -Wextra
+CFLAGS := -Wall -Wextra -Werror#-fsanitize=address -fno-omit-frame-pointer -g # -Wall -Werror -Wextra
 INCLUDE := ./include/
 LIBFT_DIR := ./libft/
 SRCS_DIR := ./srcs/

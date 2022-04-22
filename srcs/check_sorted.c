@@ -3,7 +3,6 @@
 bool	sorted(t_dlist *list)
 {
 	t_dlist	*node_cur;
-	int		i;
 
 	node_cur = list->next;
 	while (node_cur->next != list)

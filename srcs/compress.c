@@ -64,16 +64,23 @@ static void    compress(t_info *info, int *a, int *b)
     t_dlist *list;
     int     i;
     int     j;
+	bool	flg;
 
     list = info->a->next;
     i = 0;
     while (i < info->value_num)
     {
+		flg = false;
         j = 0;
         while (j < info->value_num)
         {
             if (b[j] == a[i])
-                list->index = j + 1;
+			{
+				if (flg == true)
+					put_message(info);
+				list->index = j + 1;
+				flg = true;
+			}
             j += 1;
         }
         list = list->next;

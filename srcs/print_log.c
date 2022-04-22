@@ -8,21 +8,21 @@ void	print_log(t_info *info)
 	while (i < info->turn)
 	{
 		if (info->log[i] == 's')
-            printf("sa\n");
+            ft_putstr_fd("sa\n", 1);
 		else if (info->log[i] == 'S')
-            printf("sb\n");
+            ft_putstr_fd("sb\n", 1);
         else if (info->log[i] == 'r')
-            printf("ra\n");
+            ft_putstr_fd("ra\n", 1);
 		else if (info->log[i] == 'R')
-            printf("rb\n");
+            ft_putstr_fd("rb\n", 1);
 		else if (info->log[i] == 'w')
-            printf("rra\n");
+            ft_putstr_fd("rra\n", 1);
         else if (info->log[i] == 'W')
-            printf("rrb\n");
+            ft_putstr_fd("rrb\n", 1);
 		else if (info->log[i] == 'p')
-            printf("pa\n");
+            ft_putstr_fd("pa\n", 1);
 		else if (info->log[i] == 'P')
-            printf("pb\n");
+            ft_putstr_fd("pb\n", 1);
 		i += 1;
 	}
 	info->turn = 0;
