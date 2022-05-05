@@ -7,7 +7,14 @@ void	sa(t_info *info)
 	node = info->a->next->next;
 	node_erase(info->a->next->next);
 	node_insert(info->a, node);
-	ft_putstr_fd("sa\n", 1);
+	if (info->log->prev->value == SB)
+	{
+		info->log->prev->value = SS;
+		return ;
+	}
+	else
+		node_insert(info->log->prev, list_new(SA));
+//	ft_putstr_fd("sa\n", 1);
 }
 
 void	sb(t_info *info)
@@ -17,7 +24,14 @@ void	sb(t_info *info)
 	node = info->b->next->next;
 	node_erase(info->b->next->next);
 	node_insert(info->b, node);
-	ft_putstr_fd("sb\n", 1);
+	if (info->log->prev->value == SA)
+	{
+		info->log->prev->value = SS;
+		return ;
+	}
+	else
+		node_insert(info->log->prev, list_new(SB));
+//	ft_putstr_fd("sb\n", 1);
 }
 
 void	ss(t_info *info)
@@ -31,5 +45,6 @@ void	ss(t_info *info)
 	node_erase(info->b->next->next);
 	node_insert(info->a, node_a);
 	node_insert(info->b, node_b);
-	ft_putstr_fd("ss\n", 1);
+	node_insert(info->log->prev, list_new(SS));
+//	ft_putstr_fd("ss\n", 1);
 }

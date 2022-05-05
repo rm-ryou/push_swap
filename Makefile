@@ -8,9 +8,10 @@ CMD_DIR := ./srcs/cmd
 UNDER6_DIR := ./srcs/under6
 OBJS_DIR := ./objs
 SRCS := $(SRCS_DIR)/main.c \
+		$(SRCS_DIR)/sort_over7.c \
+		$(SRCS_DIR)/print_log.c \
 		$(UNDER6_DIR)/sort_under6.c \
 		$(UNDER6_DIR)/sort_under6_util.c \
-		$(SRCS_DIR)/sort_over7.c \
 		$(DLIST_DIR)/dlist_free.c \
 		$(DLIST_DIR)/dlist_init.c \
 		$(DLIST_DIR)/dlist_set.c \

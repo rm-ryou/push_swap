@@ -25,10 +25,13 @@ int	main(int argc, char **argv)
 		sort_under6(&info);
 	else
 		sort_over7(&info);
-	print_list_a(&info);
+	print_log(&info);
+//	print_list_a(&info);
 	free_all(&info);
 	return (0);
 }
+
+//4 1 2 3 , 4 1 3 2でリーク
 
 /*
 ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG 

@@ -22,4 +22,6 @@ void	init_all(t_info *info)
 		put_message(info);
 	if (init(&info->b) == false)
 		put_message(info);
+	if (init(&info->log) == false)
+		put_message(info);
 }

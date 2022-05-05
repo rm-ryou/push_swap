@@ -13,8 +13,8 @@ void	push_b(t_info *info, int pa_num, int min)
 	{
 		pb(info);
 		cur = info->b->next;
-		if (cur->index < mid)
-			rb(info);
+	//	if (cur->index < mid)
+	//		rb(info);
 		pa_num -= 1;
 	}
 }
@@ -42,7 +42,6 @@ void	sort_b(t_info *info, int mid)
 		}
 		else
 			rb(info);
-
 	}
 	while (ra_num > 0)
 	{
@@ -77,7 +76,7 @@ bool	divide_under10(t_info *info, int pa_num)
 	int		size = dlist_size(info->b);
 
 	pa_num = 0;
-	if (dlist_size(info->b) <= 10)
+	if (dlist_size(info->b) <= 13)
 		return (true);
 	if (size % 2 != 0)
 		size += 1;
@@ -102,7 +101,7 @@ void	sort_over7(t_info *info)
 	if (info->sorted == info->value_num + 1)
 		return ;
 	divide_first(info);
-	while (dlist_size(info->b) > 10)
+	while (dlist_size(info->b) > 13)
 		divide_under10(info, 0);
 	sort_b(info, info->mid_a);
 	sort_over7(info);
@@ -124,13 +123,19 @@ void	divide_first(t_info *info)
 	{
 		cur = info->a->next;
 		if (cur->index < mid)
-			check_rb_mid(info, (mid - mid_pre) / 2 + mid_pre);
-		else if (info->a->prev->index < mid)
-			rra(info);
+			pb(info);
+		//	check_rb_mid(info, (mid - mid_pre) / 2 + mid_pre);
+	//	else if (info->a->prev->index < mid)
+	//		rra(info);
 		else
-			ra(info);
+		{
+			if (info->b->next->index != mid - 1)
+				rr(info);
+			else
+				ra(info);
+		}
 	}
-	check_rrb_mid(info, (mid - mid_pre) / 2 + mid_pre);
+//	check_rrb_mid(info, (mid - mid_pre) / 2 + mid_pre);
 }
 
 void	check_rb_mid(t_info *info, int mid)

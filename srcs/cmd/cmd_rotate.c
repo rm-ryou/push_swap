@@ -7,7 +7,14 @@ void	ra(t_info *info)
 	node = info->a->next;
 	node_erase(info->a->next);
 	node_insert(info->a->prev, node);
-	ft_putstr_fd("ra\n", 1);
+	if (info->log->prev->value == RB)
+	{
+		info->log->prev->value = RR;
+		return ;
+	}
+	else
+		node_insert(info->log->prev, list_new(RA));
+//	ft_putstr_fd("ra\n", 1);
 }
 
 void	rb(t_info *info)
@@ -17,7 +24,14 @@ void	rb(t_info *info)
 	node = info->b->next;
 	node_erase(info->b->next);
 	node_insert(info->b->prev, node);
-	ft_putstr_fd("rb\n", 1);
+	if (info->log->prev->value == RA)
+	{
+		info->log->prev->value = RR;
+		return ;
+	}
+	else
+		node_insert(info->log->prev, list_new(RB));
+//	ft_putstr_fd("rb\n", 1);
 }
 
 void	rr(t_info *info)
@@ -31,5 +45,6 @@ void	rr(t_info *info)
 	node_erase(info->b->next);
 	node_insert(info->a->prev, node_a);
 	node_insert(info->b->prev, node_b);
-	ft_putstr_fd("rr\n", 1);
+	node_insert(info->log->prev, list_new(RR));
+//	ft_putstr_fd("rr\n", 1);
 }

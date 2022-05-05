@@ -1,6 +1,6 @@
 #include "../../includes/push_swap.h"
 
-static t_dlist	*list_new(long value)
+t_dlist	*list_new(long value)
 {
 	t_dlist	*new;
 

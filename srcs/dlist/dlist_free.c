@@ -19,4 +19,5 @@ void	free_all(t_info *info)
 {
 	list_clear(info->a);
 	list_clear(info->b);
+	list_clear(info->log);
 }
