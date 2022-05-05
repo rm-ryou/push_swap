@@ -1,6 +1,4 @@
 #include "../includes/push_swap.h"
-void	check_rb_mid(t_info *info, int mid);
-void	check_rrb_mid(t_info *info, int mid);
 void	divide_first(t_info *info);
 
 void	push_b(t_info *info, int pa_num, int min)
@@ -13,8 +11,8 @@ void	push_b(t_info *info, int pa_num, int min)
 	{
 		pb(info);
 		cur = info->b->next;
-	//	if (cur->index < mid)
-	//		rb(info);
+		if (cur->index == min)
+			rb(info);
 		pa_num -= 1;
 	}
 }
@@ -28,7 +26,14 @@ void	sort_b(t_info *info, int mid)
 	while (dlist_size(info->b) > 0)
 	{
 		cur = info->b->next;
-		if (cur->index == mid)
+		if (info->b->prev->index == info->sorted)
+		{
+			rrb(info);
+			pa(info);
+			ra(info);
+			info->sorted += 1;
+		}
+		else if (cur->index == mid)
 		{
 			pa(info);
 			ra_num += 1;
@@ -42,6 +47,17 @@ void	sort_b(t_info *info, int mid)
 		}
 		else
 			rb(info);
+		
+/*		if (info->b->prev->index == info->sorted)
+		{
+			rrb(info);
+			pa(info);
+			ra(info);
+			info->sorted += 1;
+		}
+*/
+		
+		
 	}
 	while (ra_num > 0)
 	{
@@ -123,44 +139,12 @@ void	divide_first(t_info *info)
 	{
 		cur = info->a->next;
 		if (cur->index < mid)
-			pb(info);
-		//	check_rb_mid(info, (mid - mid_pre) / 2 + mid_pre);
-	//	else if (info->a->prev->index < mid)
-	//		rra(info);
-		else
 		{
-			if (info->b->next->index != mid - 1)
-				rr(info);
-			else
-				ra(info);
+			pb(info);
+			if (info->b->next->index < mid / 3)
+				rb(info);
 		}
-	}
-//	check_rrb_mid(info, (mid - mid_pre) / 2 + mid_pre);
-}
-
-void	check_rb_mid(t_info *info, int mid)
-{
-	t_dlist	*cur;
-
-	pb(info);
-	cur = info->b->next;
-	if (dlist_size(info->b) == 1)
-		return ;
-	else if (cur->index > mid)
-		rb(info);
-}
-
-void	check_rrb_mid(t_info *info, int mid)
-{
-	t_dlist	*cur;
-
-	cur = info->b->prev;
-	while (cur->index >= mid)
-	{
-		if (info->a->next->index != info->mid_a + 1)
-			rrr(info);
 		else
-			rrb(info);
-		cur = info->b->prev;
+				ra(info);
 	}
 }
