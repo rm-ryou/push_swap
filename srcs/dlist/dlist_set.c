@@ -9,6 +9,7 @@ static t_dlist	*list_new(long value)
 		return (NULL);
 	new->value = value;
 	new->index = -1;
+	new->is_compress = false;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

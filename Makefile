@@ -5,10 +5,12 @@ LIBFT_DIR := ./libft
 SRCS_DIR :=	./srcs
 DLIST_DIR := ./srcs/dlist
 CMD_DIR := ./srcs/cmd
+UNDER6_DIR := ./srcs/under6
 OBJS_DIR := ./objs
 SRCS := $(SRCS_DIR)/main.c \
-		$(SRCS_DIR)/sort_under6.c \
-		$(SRCS_DIR)/sort_under6_util.c \
+		$(UNDER6_DIR)/sort_under6.c \
+		$(UNDER6_DIR)/sort_under6_util.c \
+		$(SRCS_DIR)/sort_over7.c \
 		$(DLIST_DIR)/dlist_free.c \
 		$(DLIST_DIR)/dlist_init.c \
 		$(DLIST_DIR)/dlist_set.c \
@@ -25,7 +27,7 @@ OBJS := $(patsubst $(SRCS_DIR)%,$(OBJS_DIR)%,$(SRCS:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C $(LIBFT_DIR)
+	make bonus -C $(LIBFT_DIR)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)/libft.a -o $@
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
@@ -44,3 +46,11 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
+
+
+.PHONY: test
+test: N := 50
+test: ARG := $(shell ruby -e "puts (1..$(N)).to_a.shuffle.join(' ')")
+test: all
+#	echo $(ARG)
+	./push_swap $(ARG)

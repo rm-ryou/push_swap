@@ -16,6 +16,8 @@ static bool	init(t_dlist **list)
 void	init_all(t_info *info)
 {
 	info->value_num = 0;
+	info->sorted = 1;
+	info->mid_a = 0;
 	if (init(&info->a) == false)
 		put_message(info);
 	if (init(&info->b) == false)

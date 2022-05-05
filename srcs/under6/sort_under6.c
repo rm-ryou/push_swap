@@ -1,10 +1,10 @@
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-static void	under2(t_info *info)
+void	under2(t_info *info)
 {
 	if (dlist_size(info->a) != 2)
 		return ;
-	else if (info->a->next->index == 2)
+	else if (info->a->next->index > info->a->next->next->index)
 		sa(info);
 }
 

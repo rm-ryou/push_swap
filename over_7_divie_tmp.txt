@@ -1,0 +1,164 @@
+
+BにAのサイズが２になるまで分けて送る
+
+void	divide_first(t_info *info)
+{
+	t_dlist	*cur;
+	int		mid;
+
+	mid = dlist_size(info->a) / 2 + 1;
+	while (dlist_size(info->a) > 2)
+	{
+		printf("mid = %d\n", mid);
+		while (dlist_size(info->b) != mid - 1)
+		{
+			cur = info->a->next;
+			if (cur->index < mid)
+				pb(info);
+			else if (info->a->prev->index < mid)
+				rra(info);
+			else
+				ra(info);
+		}
+		mid += dlist_size(info->a) / 2;
+	}
+}
+under2(info);
+
+
+
+void	divide_first(t_info *info)
+{
+	t_dlist	*cur;
+	int		mid;
+	int		i;
+
+	mid = dlist_size(info->a) / 2 + 1;
+	i = info->sorted;
+	while (i < info->value_num)
+	{
+		cur = info->a->next;
+		if (cur->index < mid)
+			pb(info);
+		else
+			ra(info);
+		i += 1;
+	}
+}
+
+void	divide_first(t_info *info)
+{
+	t_dlist	*cur;
+	int		mid;
+
+	mid = dlist_size(info->a) / 2 + 1;
+	printf("mid_00 = %d\n", mid);
+	mid = dlist_size(info->a) / 2 + 1;
+	while (dlist_size(info->a) != mid - 1)
+	{
+		cur = info->a->next;
+		if (cur->index < mid)
+			pb(info);
+		else
+			ra(info);
+	}
+	int	mid_prev = mid;
+	mid += dlist_size(info->a) / 2;
+	printf("mid_01 = %d\n", mid);
+	t_dlist	*node = info->a->next;
+	while (dlist_size(info->b) != mid - 1)
+	{
+		cur = info->a->next;
+		if (cur->index < mid)
+			pb(info);
+		else if (info->a->prev->index < mid)
+			rra(info);
+		else
+			ra(info);
+	}
+	mid += dlist_size(info->a) / 2;
+	while (dlist_size(info->b) != mid - 1)
+	{
+		cur = info->a->next;
+		if (cur->index < mid)
+			pb(info);
+		else if (info->a->prev->index < mid)
+			rra(info);
+		else
+			ra(info);
+	}
+
+}
+
+分割統治
+void	divide_first(t_info *info)
+{
+	t_dlist	*cur;
+	int		mid;
+
+	mid = dlist_size(info->a) / 2 + 1;
+	info->mid_a = mid;
+	printf("mid = %d\n", mid);
+	while (dlist_size(info->b) < mid - 1)
+	{
+		cur = info->a->next;
+		if (cur->index < mid)
+			pb(info);
+		else if (info->a->prev->index < mid)
+			rra(info);
+		else
+			ra(info);
+	}
+	print_list_a(info);
+}
+
+void	sort_b(t_info *info)
+{
+	t_dlist	*cur;
+	int		mid;
+
+	mid = dlist_size(info->b) / 2;
+	while (dlist_size(info->b) > 0)
+	{
+		cur = info->b->next;
+		if (cur->index == info->sorted)
+		{
+			pa(info);
+			ra(info);
+			info->sorted += 1;
+		}
+		else if (cur->index < mid)
+			rb(info);
+		else
+			pa(info);
+	}
+	printf("sorted = %ld\n", info->sorted);
+}
+
+void	divide_to_mid(t_info *info)
+{
+	t_dlist	*cur;
+	int		mid;
+
+	mid = info->mid_a / 2;
+	cur = info->a->next;
+	printf("mid_a = %d\n", info->mid_a);
+	while (cur->index < info->mid_a)
+	{
+		if (cur->index == info->sorted)
+		{
+			ra(info);
+			info->sorted += 1;
+		}
+		else if (cur->next->index == info->sorted)
+			sa(info);
+		else if (cur->index > mid)
+		{
+			pb(info);
+			rb(info);
+		}
+		else
+			pb(info);
+		cur = info->a->next;
+	}
+}

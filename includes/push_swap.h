@@ -41,6 +41,8 @@ typedef struct s_info
 	t_dlist	*a;
 	t_dlist	*b;
 	int		value_num;
+	long	sorted;
+	int		mid_a;
 }	t_info;
 
 //in main.c
@@ -60,6 +62,9 @@ void	set_list(t_info *info, int argc, char **argv);
 //in sort_under6.c
 void	sort_under6(t_info *info);
 void	under3(t_info *info);
+void	under2(t_info *info);
+//in sort_over7.c
+void	sort_over7(t_info *info);
 
 //commands
 void	sa(t_info *info);
@@ -74,6 +79,7 @@ void	rra(t_info *info);
 void	rrb(t_info *info);
 void	rrr(t_info *info);
 
-void	print_list(t_info *info);
+void	print_list_a(t_info *info);
+void	print_list_b(t_info *info);
 
 #endif

@@ -19,14 +19,17 @@ int	main(int argc, char **argv)
 	init_all(&info);
 	set_list(&info, argc, argv);
 	compress(&info);
-	print_list(&info);
 	if (info.value_num < 0)
 		put_message(&info);
 	else if (info.value_num <= 6)
 		sort_under6(&info);
 	else
 		sort_over7(&info);
-	print_list(&info);
+	print_list_a(&info);
 	free_all(&info);
 	return (0);
 }
+
+/*
+ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG 
+*/
