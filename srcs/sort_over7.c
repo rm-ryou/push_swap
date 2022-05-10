@@ -1,18 +1,20 @@
 #include "../includes/push_swap.h"
 void	divide_first(t_info *info);
 
-void	push_b(t_info *info, int pa_num, int min)
+
+
+
+void	push_b(t_info *info, int pa_num)
 {
-	t_dlist	*cur;
-	int		mid;
-	
-	mid = pa_num / 2 + min;
 	while (pa_num > 0)
 	{
-		pb(info);
-		cur = info->b->next;
-		if (cur->index == min)
-			rb(info);
+		if (info->a->next->index == info->sorted)
+		{
+			ra(info);
+			info->sorted += 1;
+		}
+		else
+			pb(info);
 		pa_num -= 1;
 	}
 }
@@ -33,31 +35,20 @@ void	sort_b(t_info *info, int mid)
 			ra(info);
 			info->sorted += 1;
 		}
-		else if (cur->index == mid)
-		{
-			pa(info);
-			ra_num += 1;
-			mid -= 1;
-		}
 		else if (cur->index == info->sorted)
 		{
 			pa(info);
 			ra(info);
 			info->sorted += 1;
 		}
-		else
-			rb(info);
-		
-/*		if (info->b->prev->index == info->sorted)
+		else if (cur->index == mid)
 		{
-			rrb(info);
 			pa(info);
-			ra(info);
-			info->sorted += 1;
+			ra_num += 1;
+			mid -= 1;
 		}
-*/
-		
-		
+		else 
+			rb(info);
 	}
 	while (ra_num > 0)
 	{
@@ -94,22 +85,29 @@ bool	divide_under10(t_info *info, int pa_num)
 	pa_num = 0;
 	if (dlist_size(info->b) <= 13)
 		return (true);
-	if (size % 2 != 0)
-		size += 1;
-	while (dlist_size(info->b) != size / 2)
+	int	i = 0;
+	while (i < size)
 	{
 		cur = info->b->next;
-		if (cur->index > mid)
+		if (cur->index == info->sorted)
+		{
+			pa(info);
+			ra(info);
+			info->sorted += 1;
+		}
+		else if (cur->index > mid)
 		{
 			pa(info);
 			pa_num += 1;
 		}
 		else
 			rb(info);
+		i++;
 	}
 	divide_under10(info, pa_num);
 	sort_b(info, mid);
-	push_b(info, pa_num, mid + 1);
+	push_b(info, pa_num);
+	return (false);
 }
 
 void	sort_over7(t_info *info)
@@ -123,6 +121,27 @@ void	sort_over7(t_info *info)
 	sort_over7(info);
 }
 
+static void	divide_first_util(t_info *info, t_dlist *list)
+{
+	if (info->mid_a >= info->value_num)
+	{
+		if (list->index == info->sorted)
+		{
+			ra(info);
+			info->sorted += 1;
+		}
+		else
+			pb(info);
+	}
+	else
+	{
+		if (list->index < info->mid_a + 1)
+			pb(info);
+		else
+			ra(info);
+	}
+}
+
 void	divide_first(t_info *info)
 {
 	t_dlist	*cur;
@@ -134,17 +153,12 @@ void	divide_first(t_info *info)
 		mid = info->value_num + 1;
 	else
 		mid = dlist_size(info->a) / 2 + 1;
-	info->mid_a = mid - 1;	
-	while (dlist_size(info->b) != (mid - 1) - mid_pre)
+	info->mid_a = mid - 1;
+	int	i = mid_pre;
+	while (i < info->value_num)
 	{
 		cur = info->a->next;
-		if (cur->index < mid)
-		{
-			pb(info);
-			if (info->b->next->index < mid / 3)
-				rb(info);
-		}
-		else
-				ra(info);
+		divide_first_util(info, cur);
+		i++;
 	}
 }

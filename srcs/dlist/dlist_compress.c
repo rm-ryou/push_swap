@@ -37,7 +37,6 @@ void	compress(t_info *info)
 			{
 				cur_node->index = i + 1;
 				cur_node->is_compress = true;
-				break ;
 			}
 			cur_node = cur_node->next;
 			j += 1;

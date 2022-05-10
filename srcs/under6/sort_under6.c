@@ -67,7 +67,7 @@ static void	under6(t_info *info)
 	}
 	else if (dlist_size(info->b) == 3)
 		under3_b(info);
-	while(dlist_size(info->b))
+	while (dlist_size(info->b))
 		pa(info);
 }
 

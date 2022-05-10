@@ -39,3 +39,14 @@ ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG
 python3 python_visualizer.py `ruby -e "puts (-50..50).to_a.shuffle.join(' ')"`
 
 */
+
+
+//for i in {1..10} ; do <something command> ; done
+
+
+/*
+12回
+min = 14
+max = min + pa_num - 1
+
+*/

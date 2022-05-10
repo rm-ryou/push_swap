@@ -1,5 +1,5 @@
 NAME := push_swap
-CFLAGS := -fsanitize=leak -g #-Wall -Werror -Wextra
+CFLAGS := -Wall -Werror -Wextra #-fsanitize=leak -g #-Wall -Werror -Wextra
 INCLUDE := ./include
 LIBFT_DIR := ./libft
 SRCS_DIR :=	./srcs
@@ -10,6 +10,7 @@ OBJS_DIR := ./objs
 SRCS := $(SRCS_DIR)/main.c \
 		$(SRCS_DIR)/sort_over7.c \
 		$(SRCS_DIR)/print_log.c \
+		$(SRCS_DIR)/check_value.c \
 		$(UNDER6_DIR)/sort_under6.c \
 		$(UNDER6_DIR)/sort_under6_util.c \
 		$(DLIST_DIR)/dlist_free.c \

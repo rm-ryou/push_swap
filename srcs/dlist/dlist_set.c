@@ -25,10 +25,10 @@ void	set_list(t_info *info, int argc, char **argv)
 	i = info->value_num;
 	while (i > 0)
 	{
-		new = list_new(atol(argv[i]));
+		value = check_value(info, argv[i]);
+		new = list_new(value);
 		if (new == NULL)
 			put_message(info);
-//		value = check_value(info, argv[i]);
 		node_insert(info->a, new);
 		i -= 1;
 	}

@@ -4,6 +4,8 @@ void	rra(t_info *info)
 {
 	t_dlist	*node;
 
+	if (dlist_size(info->a) <= 1)
+		return ;
 	node = info->a->prev;
 	node_erase(info->a->prev);
 	node_insert(info->a, node);
@@ -14,13 +16,14 @@ void	rra(t_info *info)
 	}
 	else
 		node_insert(info->log->prev, list_new(RRA));
-//	ft_putstr_fd("rra\n", 1);
 }
 
 void	rrb(t_info *info)
 {
 	t_dlist	*node;
 
+	if (dlist_size(info->b) <= 1)
+		return ;
 	node = info->b->prev;
 	node_erase(info->b->prev);
 	node_insert(info->b, node);
@@ -31,20 +34,10 @@ void	rrb(t_info *info)
 	}
 	else
 		node_insert(info->log->prev, list_new(RRB));
-//	ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_info *info)
 {
-	t_dlist	*node_a;
-	t_dlist	*node_b;
-
-	node_a = info->a->prev;
-	node_b = info->b->prev;
-	node_erase(info->a->prev);
-	node_erase(info->b->prev);
-	node_insert(info->a, node_a);
-	node_insert(info->b, node_b);
-	node_insert(info->log->prev, list_new(RRR));
-//	ft_putstr_fd("rrr\n", 1);
+	rra(info);
+	rrb(info);
 }

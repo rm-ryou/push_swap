@@ -61,6 +61,8 @@ void	compress(t_info *info);
 //in dlist_set.c
 void	set_list(t_info *info, int argc, char **argv);
 t_dlist	*list_new(long value);
+//in check_value.c
+long	check_value(t_info *info, char *value);
 //in sort_under6.c
 void	sort_under6(t_info *info);
 void	under3(t_info *info);
