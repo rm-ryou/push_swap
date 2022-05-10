@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/10 20:17:17 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/05/10 20:48:22 by rmoriya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -69,6 +81,10 @@ void	under3(t_info *info);
 void	under2(t_info *info);
 //in sort_over7.c
 void	sort_over7(t_info *info);
+void	divide_first(t_info *info);
+int		get_pivo(t_dlist *list);
+void	pa_and_ra(t_info *info);
+void	re_rotate(t_info *info, int ra_num);
 
 //commands
 void	sa(t_info *info);
@@ -82,11 +98,7 @@ void	rr(t_info *info);
 void	rra(t_info *info);
 void	rrb(t_info *info);
 void	rrr(t_info *info);
-
 //in print_log.c
 void	print_log(t_info *info);
-
-void	print_list_a(t_info *info);
-void	print_list_b(t_info *info);
 
 #endif

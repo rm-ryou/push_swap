@@ -9,6 +9,7 @@ UNDER6_DIR := ./srcs/under6
 OBJS_DIR := ./objs
 SRCS := $(SRCS_DIR)/main.c \
 		$(SRCS_DIR)/sort_over7.c \
+		$(SRCS_DIR)/sort_over7_util.c \
 		$(SRCS_DIR)/print_log.c \
 		$(SRCS_DIR)/check_value.c \
 		$(UNDER6_DIR)/sort_under6.c \
@@ -18,7 +19,6 @@ SRCS := $(SRCS_DIR)/main.c \
 		$(DLIST_DIR)/dlist_set.c \
 		$(DLIST_DIR)/dlist_util.c \
 		$(DLIST_DIR)/dlist_compress.c \
-		$(DLIST_DIR)/dlist_print.c \
 		$(CMD_DIR)/cmd_push.c \
 		$(CMD_DIR)/cmd_rotate.c \
 		$(CMD_DIR)/cmd_swap.c \
@@ -48,4 +48,3 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
-
