@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist_util.c                                       :+:      :+:    :+:   */
+/*   cmd_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:17:17 by rmoriya           #+#    #+#             */
-/*   Updated: 2022/05/20 16:13:35 by rmoriya          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:12:36 by rmoriya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	node_erase(t_dlist *node)
+void	pa(t_info *info)
 {
-	node->prev->next = node->next;
-	node->next->prev = node->prev;
+	t_dlist	*node;
+
+	if (info->b->next == info->b)
+		return ;
+	node = info->b->next;
+	node_erase(info->b->next);
+	node_insert(info->a, node);
+	node_insert(info->log->prev, list_new(PA));
 }
 
-void	node_insert(t_dlist *list, t_dlist *node)
+void	pb(t_info *info)
 {
-	node->next = list->next;
-	list->next->prev = node;
-	list->next = node;
-	node->prev = list;
-}
+	t_dlist	*node;
 
-int	dlist_size(t_dlist *list)
-{
-	t_dlist	*tmp;
-	int		size;
-
-	tmp = list;
-	size = 0;
-	while (tmp->next != list)
-	{
-		tmp = tmp->next;
-		size += 1;
-	}
-	return (size);
+	if (info->a->next == info->a)
+		return ;
+	node = info->a->next;
+	node_erase(info->a->next);
+	node_insert(info->b, node);
+	node_insert(info->log->prev, list_new(PB));
 }

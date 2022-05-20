@@ -5,37 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 19:21:56 by rmoriya           #+#    #+#             */
-/*   Updated: 2022/04/22 19:52:15 by rmoriya          ###   ########.fr       */
+/*   Created: 2022/05/10 20:17:17 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/05/20 16:06:18 by rmoriya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
+
+static void	print_str(int value)
+{
+	if (value == SA)
+		ft_putstr_fd("sa\n", 1);
+	else if (value == SB)
+		ft_putstr_fd("sb\n", 1);
+	else if (value == SS)
+		ft_putstr_fd("ss\n", 1);
+	else if (value == RA)
+		ft_putstr_fd("ra\n", 1);
+	else if (value == RB)
+		ft_putstr_fd("rb\n", 1);
+	else if (value == RR)
+		ft_putstr_fd("rr\n", 1);
+	else if (value == PA)
+		ft_putstr_fd("pa\n", 1);
+	else if (value == PB)
+		ft_putstr_fd("pb\n", 1);
+	else if (value == RRA)
+		ft_putstr_fd("rra\n", 1);
+	else if (value == RRB)
+		ft_putstr_fd("rrb\n", 1);
+	else if (value == RRR)
+		ft_putstr_fd("rrr\n", 1);
+}
 
 void	print_log(t_info *info)
 {
-	int	i;
+	t_dlist	*cur;
 
-	i = 0;
-	while (i < info->turn)
+	cur = info->log->next;
+	while (cur != info->log)
 	{
-		if (info->log[i] == 's')
-			ft_putstr_fd("sa\n", 1);
-		else if (info->log[i] == 'S')
-			ft_putstr_fd("sb\n", 1);
-		else if (info->log[i] == 'r')
-			ft_putstr_fd("ra\n", 1);
-		else if (info->log[i] == 'R')
-			ft_putstr_fd("rb\n", 1);
-		else if (info->log[i] == 'w')
-			ft_putstr_fd("rra\n", 1);
-		else if (info->log[i] == 'W')
-			ft_putstr_fd("rrb\n", 1);
-		else if (info->log[i] == 'p')
-			ft_putstr_fd("pa\n", 1);
-		else if (info->log[i] == 'P')
-			ft_putstr_fd("pb\n", 1);
-		i += 1;
+		print_str(cur->value);
+		cur = cur->next;
 	}
-	info->turn = 0;
 }

@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_sorted.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: rmoriya   <rmoriya@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 16:08:46 by rmoriya           #+#    #+#             */
-/*   Updated: 2022/05/20 16:11:47 by rmoriya          ###   ########.fr       */
+/*   Created: 2022/01/28 23:23:45 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/01/28 23:23:45 by rmoriya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-bool	is_sorted(t_dlist *list)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_dlist	*node_cur;
-
-	node_cur = list->next;
-	while (node_cur->next != list)
-	{
-		if (node_cur->index > node_cur->next->index)
-			return (false);
-		node_cur = node_cur->next;
-	}
-	return (true);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

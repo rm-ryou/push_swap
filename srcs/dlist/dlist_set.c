@@ -5,22 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 19:21:56 by rmoriya           #+#    #+#             */
-/*   Updated: 2022/04/22 19:46:37 by rmoriya          ###   ########.fr       */
+/*   Created: 2022/05/10 20:17:17 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/05/20 16:12:24 by rmoriya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "push_swap.h"
 
-t_dlist	*list_new(t_info *info, int value)
+t_dlist	*list_new(long value)
 {
 	t_dlist	*new;
 
 	new = (t_dlist *)malloc(sizeof(t_dlist));
 	if (new == NULL)
-		put_message(info);
+		return (NULL);
 	new->value = value;
 	new->index = -1;
+	new->is_compress = false;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
@@ -28,18 +29,19 @@ t_dlist	*list_new(t_info *info, int value)
 
 void	set_list(t_info *info, int argc, char **argv)
 {
-	int		i;
-	int		value;
 	t_dlist	*new;
+	int		i;
+	long	value;
 
 	info->value_num = argc - 1;
 	i = info->value_num;
 	while (i > 0)
 	{
-		new = list_new(info, value);
 		value = check_value(info, argv[i]);
-		node_insert(info->a, list_new(info, value));
-		free(new);
+		new = list_new(value);
+		if (new == NULL)
+			put_message(info);
+		node_insert(info->a, new);
 		i -= 1;
 	}
 }

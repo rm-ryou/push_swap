@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 14:22:13 by rmoriya           #+#    #+#             */
-/*   Updated: 2022/04/22 19:54:10 by rmoriya          ###   ########.fr       */
+/*   Created: 2022/05/10 20:17:17 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/05/20 16:06:30 by rmoriya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
-int	check_value(t_info *info, char *value)
+long	check_value(t_info *info, char *value)
 {
 	int		i;
 	int		value_len;

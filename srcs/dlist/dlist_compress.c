@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compress.c                                         :+:      :+:    :+:   */
+/*   dlist_compress.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 19:21:56 by rmoriya           #+#    #+#             */
-/*   Updated: 2022/04/22 19:56:28 by rmoriya          ###   ########.fr       */
+/*   Created: 2022/05/10 20:17:17 by rmoriya           #+#    #+#             */
+/*   Updated: 2022/05/20 16:12:07 by rmoriya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 static int	*set_array(t_info *info)
 {
@@ -72,7 +72,7 @@ static void	quick_sort(int *array, int left, int right)
 	quick_sort(array, i + 1, right);
 }
 
-static void	compress(t_info *info, int *a, int *b)
+static void	compress_set(t_info *info, int *a, int *b)
 {
 	t_dlist	*list;
 	int		i;
@@ -101,7 +101,7 @@ static void	compress(t_info *info, int *a, int *b)
 	}
 }
 
-void	compress_pre(t_info *info)
+void	compress(t_info *info)
 {
 	int	*array;
 	int	*array_sorted;
@@ -109,7 +109,7 @@ void	compress_pre(t_info *info)
 	array = set_array(info);
 	array_sorted = set_array(info);
 	quick_sort(array_sorted, 0, info->value_num);
-	compress(info, array, array_sorted);
+	compress_set(info, array, array_sorted);
 	free(array);
 	free(array_sorted);
 }
