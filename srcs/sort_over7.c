@@ -6,11 +6,11 @@
 /*   By: rmoriya <rmoriya@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 20:17:17 by rmoriya           #+#    #+#             */
-/*   Updated: 2022/05/10 20:50:07 by rmoriya          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:52:45 by rmoriya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	push_b(t_info *info, int pa_num)
 {
@@ -36,21 +36,7 @@ void	sort_b(t_info *info, int mid)
 	while (dlist_size(info->b) > 0)
 	{
 		cur = info->b->next;
-		if (info->b->prev->index == info->sorted)
-		{
-			rrb(info);
-			pa_and_ra(info);
-		}
-		else if (cur->index == info->sorted)
-			pa_and_ra(info);
-		else if (cur->index == mid)
-		{
-			pa(info);
-			ra_num += 1;
-			mid -= 1;
-		}
-		else
-			rb(info);
+		check_list(info, cur, &ra_num, &mid);
 	}
 	re_rotate(info, ra_num);
 }
@@ -94,6 +80,8 @@ bool	divide_under10(t_info *info, int pa_num, int i)
 
 void	sort_over7(t_info *info)
 {
+	if (dlist_size(info->b) == 0 && is_sorted(info->a))
+		return ;
 	if (info->sorted == info->value_num + 1)
 		return ;
 	divide_first(info);
