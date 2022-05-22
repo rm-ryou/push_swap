@@ -1,5 +1,5 @@
 NAME := push_swap
-CFLAGS := -fsanitize=leak -g -Wall -Werror -Wextra -MMD -MP
+CFLAGS := -Wall -Werror -Wextra -MMD -MP #-fsanitize=leak -g
 INCLUDE := ./includes
 LIBFT_DIR := ./libft
 SRCS_DIR :=	./srcs
@@ -51,3 +51,10 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
+
+.PHONY: test
+test: N := 50
+test: ARG := $(shell ruby -e "puts (1..$(N)).to_a.shuffle.join(' ')")
+test: all
+#	echo $(ARG)
+	./push_swap $(ARG)
