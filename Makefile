@@ -27,6 +27,7 @@ SRCS := $(SRCS_DIR)/main.c \
 		$(CMD_DIR)/cmd_swap.c \
 		$(CMD_DIR)/cmd_rotate_re.c
 OBJS := $(patsubst $(SRCS_DIR)%,$(OBJS_DIR)%,$(SRCS:.c=.o))
+DEPS := $(patsubst $(SRCS_DIR)%,$(OBJS_DIR)%,$(SRCS:.c=.d))
 
 .PHONY: all
 all: $(NAME)
@@ -38,6 +39,8 @@ $(NAME): $(OBJS)
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	mkdir -p $(OBJS_DIR)/$(*D)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+
+-include $(DEPS)
 
 .PHONY: clean
 clean:
